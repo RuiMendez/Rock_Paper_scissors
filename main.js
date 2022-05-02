@@ -1,5 +1,22 @@
 const choices = ['rock', 'paper', 'scissors'];
 
+function singleRound() {
+    let userSelection = userPlay();
+    let computerSelection = computerPlay();
+    //checkWinner(computerSelection, userSelection)
+    console.log(`You played ${userSelection}`);
+    console.log(`Computer played ${computerSelection}`);
+    let declareWinner = checkWinner(computerSelection, userSelection)
+
+    if (declareWinner === 'tie') {
+        console.log('It\'s a tie!')
+    } else if (declareWinner === 'user') {
+        console.log('You win!')
+    } else {
+        console.log('You lose!')
+    }
+}
+
 function computerPlay() {
     return choices[Math.floor(Math.random() * choices.length)]
 }
@@ -24,3 +41,5 @@ function checkWinner(computerC, userC) {
         return 'computer'
     }
 }
+
+singleRound();
