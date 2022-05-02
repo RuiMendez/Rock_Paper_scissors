@@ -1,11 +1,18 @@
 const choices = ['rock', 'paper', 'scissors'];
 
+function game() {
+    for (let i = 0; i < 5; i++) {
+        singleRound()
+    }
+}
+
 function singleRound() {
     let userSelection = userPlay();
     let computerSelection = computerPlay();
     //checkWinner(computerSelection, userSelection)
     console.log(`You played ${userSelection}`);
     console.log(`Computer played ${computerSelection}`);
+
     let declareWinner = checkWinner(computerSelection, userSelection)
 
     if (declareWinner === 'tie') {
@@ -15,6 +22,7 @@ function singleRound() {
     } else {
         console.log('You lose!')
     }
+    console.log(`--------------`)
 }
 
 function computerPlay() {
@@ -42,4 +50,4 @@ function checkWinner(computerC, userC) {
     }
 }
 
-singleRound();
+game();
