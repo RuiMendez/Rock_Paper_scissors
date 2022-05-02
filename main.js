@@ -2,8 +2,11 @@ const choices = ['rock', 'paper', 'scissors'];
 const winners = [];
 
 function game() {
-    for (let i = 0; i < 5; i++) {
-        singleRound()
+    for (let i = 1; i < 6; i++) {
+        singleRound(i)
+        console.log(`Round ${i}`)
+        console.log(`--------------`)
+
     }
     let userSelection = userPlay();
     let computerSelection = computerPlay();
@@ -14,6 +17,7 @@ function game() {
 function singleRound() {
     let userSelection = userPlay();
     let computerSelection = computerPlay();
+
     console.log(`You played ${userSelection}`);
     console.log(`Computer played ${computerSelection}`);
 
@@ -27,7 +31,6 @@ function singleRound() {
     } else {
         console.log('You lose!')
     }
-    console.log(`--------------`)
 }
 
 function computerPlay() {
