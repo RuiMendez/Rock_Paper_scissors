@@ -1,20 +1,25 @@
 const choices = ['rock', 'paper', 'scissors'];
+const winners = [];
 
 function game() {
     for (let i = 0; i < 5; i++) {
         singleRound()
     }
+    let userSelection = userPlay();
+    let computerSelection = computerPlay();
+    findGameWinner(userSelection, computerSelection);
+
 }
 
 function singleRound() {
     let userSelection = userPlay();
     let computerSelection = computerPlay();
-    //checkWinner(computerSelection, userSelection)
     console.log(`You played ${userSelection}`);
     console.log(`Computer played ${computerSelection}`);
 
     let declareWinner = checkWinner(computerSelection, userSelection)
-
+    let wins = declareWinner;
+    winners.push(declareWinner);
     if (declareWinner === 'tie') {
         console.log('It\'s a tie!')
     } else if (declareWinner === 'user') {
@@ -48,6 +53,34 @@ function checkWinner(computerC, userC) {
     } else {
         return 'computer'
     }
+}
+
+
+function logPlays(choiceP, choiceC) {
+    console.log(`You played ${choiceP}`);
+    console.log(`Computer played ${choiceC}`)
+}
+
+function findGameWinner(user, computer) {
+    let playerCounter = 0;
+    let computerCounter = 0;
+
+    winners.forEach(element => {
+        if (element === 'user') {
+            playerCounter += 1;
+        }
+        if (element == 'computer') {
+            computerCounter += 1
+        }
+    });
+    if (playerCounter > computerCounter) {
+        console.log(`You win the game`);
+    } else if (playerCounter < computerCounter) {
+        console.log('Computer wins the game')
+    } else {
+        console.log('The game is a tie')
+    }
+
 }
 
 game();
