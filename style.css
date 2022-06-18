@@ -152,3 +152,39 @@ body {
     width: 150px;
     height: 150px;
 }
+
+.score-container {
+    display: flex;
+    outline: #333 solid;
+    margin-top: 50px;
+    color: #444;
+    font-family: inherit;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 400;
+    padding: 0.7rem 2.5rem;
+    background-color: white;
+    border-radius: 50rem;
+}
+
+.score {
+    padding-right: 10px;
+}
+
+.score-computer-container {
+    display: flex;
+    outline: #333 solid;
+    margin-top: 50px;
+    color: #444;
+    font-family: inherit;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 400;
+    padding: 0.7rem 2.5rem;
+    background-color: white;
+    border-radius: 50rem;
+}
+
+.score-computer {
+    padding-right: 10px;
+}
