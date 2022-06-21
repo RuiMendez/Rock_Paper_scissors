@@ -5,6 +5,9 @@ const scoreEl0 = document.querySelector("#score--0");
 const scoreEl1 = document.querySelector("#score--1");
 const yourSelection = document.querySelector(".selection-you");
 const computerSelection = document.querySelector(".selection-computer");
+const rock = document.querySelector(".rock");
+const paper = document.querySelector(".paper");
+const scissors = document.querySelector(".scissors");
 
 //starting conditions
 scoreEl0.textContent = 0;
@@ -50,9 +53,21 @@ function computerPlay() {
 }
 
 function userPlay() {
-    let input = prompt("Please type Rock, Paper or Scissors");
-    input = input.toLowerCase();
-    return input;
+    rock.addEventListener("click", function() {
+        yourSelection.classList.remove("hidden");
+        yourSelection.src = "images/rock.png";
+        return "rock";
+    });
+    paper.addEventListener("click", function() {
+        yourSelection.classList.remove("hidden");
+        yourSelection.src = "images/paper.png";
+        return "paper";
+    });
+    scissors.addEventListener("click", function() {
+        yourSelection.classList.remove("hidden");
+        yourSelection.src = "images/scissors.png";
+        return "scissors";
+    });
 }
 
 function checkWinner(computerC, userC) {
