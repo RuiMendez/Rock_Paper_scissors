@@ -1,3 +1,17 @@
+"strict";
+
+//query selectors
+const scoreEl0 = document.querySelector("#score--0");
+const scoreEl1 = document.querySelector("#score--1");
+const yourSelection = document.querySelector(".selection-you");
+const computerSelection = document.querySelector(".selection-computer");
+
+//starting conditions
+scoreEl0.textContent = 0;
+scoreEl1.textContent = 0;
+yourSelection.classList.add("hidden");
+computerSelection.classList.add("hidden");
+
 const choices = ["rock", "paper", "scissors"];
 const winners = [];
 
