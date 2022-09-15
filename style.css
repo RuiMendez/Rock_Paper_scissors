@@ -27,15 +27,15 @@ body {
     height: 150px;
 }
 
-.options .rock:hover,
-.paper:hover,
-.scissors:hover {
+.options #rock:hover,
+#papper:hover,
+#scissors:hover {
     transform: scale(1.2);
 }
 
-.options .rock,
-.paper,
-.scissors {
+.options #rock,
+#papper,
+#scissors {
     cursor: pointer;
 }
 

@@ -1,113 +1,52 @@
 "strict";
 
-//query selectors
-const scoreEl0 = document.querySelector("#score--0");
-const scoreEl1 = document.querySelector("#score--1");
-const yourSelection = document.querySelector(".selection-you");
-const computerSelection = document.querySelector(".selection-computer");
-const rock = document.querySelector(".rock");
-const paper = document.querySelector(".paper");
-const scissors = document.querySelector(".scissors");
+let winners = [];
+const choices = ["rock", "paper", "scisors"];
 
-//starting conditions
-scoreEl0.textContent = 0;
-scoreEl1.textContent = 0;
-yourSelection.classList.add("hidden");
-computerSelection.classList.add("hidden");
-
-const choices = ["rock", "paper", "scissors"];
-const winners = [];
-
-function game() {
-    for (let i = 1; i < 6; i++) {
-        singleRound(i);
-        console.log(`Round ${i}`);
-        console.log(`--------------`);
-    }
-    let userSelection = userPlay();
-    let computerSelection = computerPlay();
-    findGameWinner(userSelection, computerSelection);
+function resetGame() {
+    //reset game
 }
 
-function singleRound() {
-    let userSelection = userPlay();
-    let computerSelection = computerPlay();
-
-    console.log(`You played ${userSelection}`);
-    console.log(`Computer played ${computerSelection}`);
-
-    let declareWinner = checkWinner(computerSelection, userSelection);
-
-    winners.push(declareWinner);
-    if (declareWinner === "tie") {
-        console.log("It's a tie!");
-    } else if (declareWinner === "user") {
-        console.log("You win!");
-    } else {
-        console.log("You lose!");
-    }
+function startGame() {
+    //play the game until someone wins 5 times
+    let imgs = document.querySelectorAll("img");
+    imgs.forEach((img) =>
+        img.addEventListener("click", () => {
+            playRound(img.id);
+        })
+    );
 }
 
-function computerPlay() {
-    return choices[Math.floor(Math.random() * choices.length)];
+function playRound(playerChoice) {
+    const computerChoice = computerSelect();
+    const winner = checkWinner(playerChoice, computerChoice);
+
+    winners.push(winner);
 }
 
-function userPlay() {
-    rock.addEventListener("click", function() {
-        yourSelection.classList.remove("hidden");
-        yourSelection.src = "images/rock.png";
-        return "rock";
-    });
-    paper.addEventListener("click", function() {
-        yourSelection.classList.remove("hidden");
-        yourSelection.src = "images/paper.png";
-        return "paper";
-    });
-    scissors.addEventListener("click", function() {
-        yourSelection.classList.remove("hidden");
-        yourSelection.src = "images/scissors.png";
-        return "scissors";
-    });
+function computerSelect() {
+    //todo - update the dom with the computer selection
+    return choices[Math.floor[Math.random() * choices.length]];
 }
 
-function checkWinner(computerC, userC) {
-    if (computerC == userC) {
-        return "tie";
-    } else if (
-        (userC === "rock" && computerC === "scissors") ||
-        (userC === "paper" && computerC === "rock") ||
-        (userC === "scissors" && computerC === "paper")
+function checkWinner(choice1, choice2) {
+    if (
+        (choice1 == "rock" && choice2 == "scissors") ||
+        (choice1 == "scissors" && choice2 == "paper") ||
+        (choice1 == "paper" && choice2 == "rock")
     ) {
-        return "user";
+        return "Player";
+    } else if (choice1 == choice2) {
+        return "Tie";
     } else {
-        return "computer";
+        return "Computer";
     }
 }
 
-function logPlays(choiceP, choiceC) {
-    console.log(`You played ${choiceP}`);
-    console.log(`Computer played ${choiceC}`);
+function setWins() {
+    const pWinCount = winners.filter((item) => item == "Player").length;
+    const cWinCount = winners.filter((item) => item == "Computer").length;
+    const ties = winners.filter((item) => item == "Tie").length;
 }
 
-function findGameWinner(user, computer) {
-    let playerCounter = 0;
-    let computerCounter = 0;
-
-    winners.forEach((element) => {
-        if (element === "user") {
-            playerCounter += 1;
-        }
-        if (element == "computer") {
-            computerCounter += 1;
-        }
-    });
-    if (playerCounter > computerCounter) {
-        console.log(`You win the game`);
-    } else if (playerCounter < computerCounter) {
-        console.log("Computer wins the game");
-    } else {
-        console.log("The game is a tie");
-    }
-}
-
-game();
+startGame();
