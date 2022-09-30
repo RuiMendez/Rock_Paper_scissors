@@ -1,26 +1,35 @@
 "strict";
 
+//element selection
+const yourSelection = document.querySelector(".selection-you");
+const computerSelection = document.querySelector(".selection-computer");
+
+//staring conditions
+yourSelection.classList.add("hidden");
+computerSelection.classList.add("hidden");
+
 let winners = [];
-const choices = ["rock", "paper", "scisors"];
+const choices = ["rock", "paper", "scissors"];
 
 function resetGame() {
     //reset game
 }
 
 function startGame() {
-    //play the game until someone wins 5 times
     let imgs = document.querySelectorAll("img");
-    imgs.forEach((img) =>
+    imgs.forEach((img) => {
         img.addEventListener("click", () => {
-            playRound(img.id);
-        })
-    );
+            if (img.id) {
+                playRound(img.id);
+            }
+        });
+    });
 }
 
 function playRound(playerChoice) {
     const computerChoice = computerSelect();
     const winner = checkWinner(playerChoice, computerChoice);
-
+    console.log(`${winner}`);
     winners.push(winner);
 }
 
