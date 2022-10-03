@@ -3,6 +3,7 @@
 //element selection
 const yourSelection = document.querySelector(".selection-you");
 const computerSelection = document.querySelector(".selection-computer");
+const imgs = document.querySelectorAll("img");
 
 //staring conditions
 yourSelection.classList.add("hidden");
@@ -16,11 +17,13 @@ function resetGame() {
 }
 
 function startGame() {
-    let imgs = document.querySelectorAll("img");
     imgs.forEach((img) => {
         img.addEventListener("click", () => {
             if (img.id) {
                 playRound(img.id);
+                yourSelection.classList.remove("hidden");
+
+                yourSelection.src = `images/${img.id}.png`;
             }
         });
     });
@@ -28,14 +31,17 @@ function startGame() {
 
 function playRound(playerChoice) {
     const computerChoice = computerSelect();
+
     const winner = checkWinner(playerChoice, computerChoice);
-    console.log(`${winner}`);
+    computerSelection.classList.remove("hidden");
+    computerSelection.src = `images/${computerChoice}.png`;
+
     winners.push(winner);
 }
 
 function computerSelect() {
     //todo - update the dom with the computer selection
-    return choices[Math.floor[Math.random() * choices.length]];
+    return choices[Math.floor(Math.random() * choices.length)];
 }
 
 function checkWinner(choice1, choice2) {
@@ -57,5 +63,5 @@ function setWins() {
     const cWinCount = winners.filter((item) => item == "Computer").length;
     const ties = winners.filter((item) => item == "Tie").length;
 }
-
+//console.log(`Computer chose ${computerSelect()}`);
 startGame();

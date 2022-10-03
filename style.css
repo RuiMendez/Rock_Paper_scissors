@@ -28,13 +28,13 @@ body {
 }
 
 .options #rock:hover,
-#papper:hover,
+#paper:hover,
 #scissors:hover {
     transform: scale(1.2);
 }
 
 .options #rock,
-#papper,
+#paper,
 #scissors {
     cursor: pointer;
 }
