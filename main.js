@@ -4,10 +4,14 @@
 const yourSelection = document.querySelector(".selection-you");
 const computerSelection = document.querySelector(".selection-computer");
 const imgs = document.querySelectorAll("img");
+const playerScore = document.getElementById("score--0");
+const computerScore = document.getElementById("score--1");
 
 //staring conditions
 yourSelection.classList.add("hidden");
 computerSelection.classList.add("hidden");
+playerScore.textContent = 0;
+computerScore.textContent = 0;
 
 let winners = [];
 const choices = ["rock", "paper", "scissors"];
@@ -35,7 +39,7 @@ function playRound(playerChoice) {
     const winner = checkWinner(playerChoice, computerChoice);
     computerSelection.classList.remove("hidden");
     computerSelection.src = `images/${computerChoice}.png`;
-
+    score(winner);
     winners.push(winner);
 }
 
@@ -55,6 +59,15 @@ function checkWinner(choice1, choice2) {
         return "Tie";
     } else {
         return "Computer";
+    }
+}
+
+function score(winner) {
+    if (winner === "Player") {
+        playerScore.textContent++;
+    }
+    if (winner === "Computer") {
+        computerScore.textContent++;
     }
 }
 
