@@ -51,6 +51,10 @@ function playRound(playerChoice) {
     rounds.classList.remove("remove");
     score(winner);
     winners.push(winner);
+
+    if (winners.length > 4) {
+        determineGameWinner();
+    }
 }
 
 function computerSelect() {
@@ -97,4 +101,22 @@ function setWins() {
         return "Tie";
     }
 }
+
+function determineGameWinner() {
+    const gameResult = setWins();
+    if (gameResult === "Player") {
+        options.classList.add("remove");
+        gameEnd.classList.remove("remove");
+        gameEnd.textContent = "YOU WIN!";
+    } else if (gameResult === "Computer") {
+        options.classList.add("remove");
+        gameEnd.classList.remove("remove");
+        gameEnd.textContent = "YOU LOSE!";
+    } else {
+        options.classList.add("remove");
+        gameEnd.classList.remove("remove");
+        gameEnd.textContent = `IT'S A TIE!`;
+    }
+}
+
 startGame();
