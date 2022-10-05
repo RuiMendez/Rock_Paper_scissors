@@ -17,7 +17,7 @@ computerSelection.classList.add("hidden");
 playerScore.textContent = 0;
 computerScore.textContent = 0;
 gameRound.textContent = 0;
-rounds.classList.add("remove");
+rounds.classList.add("hidden");
 //options.classList.add("remove");
 gameEnd.classList.add("remove");
 
@@ -48,7 +48,7 @@ function playRound(playerChoice) {
     computerSelection.classList.remove("hidden");
     computerSelection.src = `images/${computerChoice}.png`;
     gameRound.textContent++;
-    rounds.classList.remove("remove");
+    rounds.classList.remove("hidden");
     score(winner);
     winners.push(winner);
 
