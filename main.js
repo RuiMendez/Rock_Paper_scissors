@@ -10,23 +10,26 @@ const gameRound = document.querySelector(".number");
 const rounds = document.querySelector(".rounds");
 const options = document.querySelector(".options");
 const gameEnd = document.querySelector(".game-end");
-
-//staring conditions
-yourSelection.classList.add("hidden");
-computerSelection.classList.add("hidden");
-playerScore.textContent = 0;
-computerScore.textContent = 0;
-gameRound.textContent = 0;
-rounds.classList.add("hidden");
-//options.classList.add("remove");
-gameEnd.classList.add("remove");
+const newGameBtn = document.querySelector(".new-game");
 
 let winners = [];
-const choices = ["rock", "paper", "scissors"];
 
-function resetGame() {
-    //reset game
-}
+//staring conditions
+const reset = function() {
+    yourSelection.classList.add("hidden");
+    computerSelection.classList.add("hidden");
+    playerScore.textContent = 0;
+    computerScore.textContent = 0;
+    gameRound.textContent = 0;
+    rounds.classList.add("hidden");
+    gameEnd.classList.add("remove");
+    options.classList.remove("remove");
+    winners = [];
+};
+
+reset();
+
+const choices = ["rock", "paper", "scissors"];
 
 function startGame() {
     imgs.forEach((img) => {
@@ -84,11 +87,6 @@ function score(winner) {
     }
 }
 
-/*function gameRound() {
-    rounds.textContent += 1;
-    rounds.classList.remove("remove");
-}*/
-
 function setWins() {
     const pWinCount = winners.filter((item) => item == "Player").length;
     const cWinCount = winners.filter((item) => item == "Computer").length;
@@ -120,3 +118,4 @@ function determineGameWinner() {
 }
 
 startGame();
+newGameBtn.addEventListener("click", reset);

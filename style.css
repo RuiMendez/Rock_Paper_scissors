@@ -98,6 +98,10 @@ body {
     cursor: pointer;
 }
 
+.new-game:hover {
+    transform: scale(1.2);
+}
+
 .rounds {
     display: flex;
     flex-direction: column;
