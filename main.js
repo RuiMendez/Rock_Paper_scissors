@@ -14,7 +14,7 @@ yourSelection.classList.add("hidden");
 computerSelection.classList.add("hidden");
 playerScore.textContent = 0;
 computerScore.textContent = 0;
-gameRound.textContent = 1;
+gameRound.textContent = 0;
 rounds.classList.add("remove");
 
 let winners = [];
@@ -43,6 +43,8 @@ function playRound(playerChoice) {
     const winner = checkWinner(playerChoice, computerChoice);
     computerSelection.classList.remove("hidden");
     computerSelection.src = `images/${computerChoice}.png`;
+    gameRound.textContent++;
+    rounds.classList.remove("remove");
     score(winner);
     winners.push(winner);
 }
@@ -74,10 +76,14 @@ function score(winner) {
     }
 }
 
+/*function gameRound() {
+    rounds.textContent += 1;
+    rounds.classList.remove("remove");
+}*/
+
 function setWins() {
     const pWinCount = winners.filter((item) => item == "Player").length;
     const cWinCount = winners.filter((item) => item == "Computer").length;
     const ties = winners.filter((item) => item == "Tie").length;
 }
-//console.log(`Computer chose ${computerSelect()}`);
 startGame();
