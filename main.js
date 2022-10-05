@@ -6,12 +6,16 @@ const computerSelection = document.querySelector(".selection-computer");
 const imgs = document.querySelectorAll("img");
 const playerScore = document.getElementById("score--0");
 const computerScore = document.getElementById("score--1");
+const gameRound = document.querySelector(".number");
+const rounds = document.querySelector(".rounds");
 
 //staring conditions
 yourSelection.classList.add("hidden");
 computerSelection.classList.add("hidden");
 playerScore.textContent = 0;
 computerScore.textContent = 0;
+gameRound.textContent = 1;
+rounds.classList.add("remove");
 
 let winners = [];
 const choices = ["rock", "paper", "scissors"];
@@ -44,7 +48,6 @@ function playRound(playerChoice) {
 }
 
 function computerSelect() {
-    //todo - update the dom with the computer selection
     return choices[Math.floor(Math.random() * choices.length)];
 }
 
