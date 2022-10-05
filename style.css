@@ -185,6 +185,19 @@ body {
     border-radius: 50rem;
 }
 
+.game-end {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: inherit;
+    font-size: 10.8rem;
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.726);
+}
+
 .hidden {
     visibility: hidden;
 }

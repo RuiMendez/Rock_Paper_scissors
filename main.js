@@ -8,6 +8,8 @@ const playerScore = document.getElementById("score--0");
 const computerScore = document.getElementById("score--1");
 const gameRound = document.querySelector(".number");
 const rounds = document.querySelector(".rounds");
+const options = document.querySelector(".options");
+const gameEnd = document.querySelector(".game-end");
 
 //staring conditions
 yourSelection.classList.add("hidden");
@@ -16,6 +18,8 @@ playerScore.textContent = 0;
 computerScore.textContent = 0;
 gameRound.textContent = 0;
 rounds.classList.add("remove");
+//options.classList.add("remove");
+gameEnd.classList.add("remove");
 
 let winners = [];
 const choices = ["rock", "paper", "scissors"];
@@ -85,5 +89,12 @@ function setWins() {
     const pWinCount = winners.filter((item) => item == "Player").length;
     const cWinCount = winners.filter((item) => item == "Computer").length;
     const ties = winners.filter((item) => item == "Tie").length;
+    if (pWinCount > cWinCount) {
+        return "Player";
+    } else if (cWinCount > pWinCount) {
+        return "Computer";
+    } else {
+        return "Tie";
+    }
 }
 startGame();
