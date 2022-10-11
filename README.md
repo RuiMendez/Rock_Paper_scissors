@@ -1,5 +1,6 @@
 # rock_paper_scissors
 Created using HTML, CSS and Javascript
+See live version: https://ruimendez.github.io/rock_paper_scissors/
 
 The first part of the project consisted in creating a console based game using the prompt as an input
 
